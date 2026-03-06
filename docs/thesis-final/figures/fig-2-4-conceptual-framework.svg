@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="1050" viewBox="0 0 1100 1050">
+  <defs>
+    <style>
+      text { font-family: Arial, Helvetica, sans-serif; }
+      .title { font-size: 20px; font-weight: bold; text-anchor: middle; }
+      .layer-title { font-size: 16px; font-weight: bold; text-anchor: middle; }
+      .box-text { font-size: 12.5px; text-anchor: middle; }
+      .arrow-text { font-size: 13px; font-style: italic; fill: #DC2626; text-anchor: middle; }
+    </style>
+  </defs>
+
+  <!-- Title -->
+  <text x="550" y="30" class="title">Figure 2.4: Conceptual Framework for SAFEROUTE CM</text>
+
+  <!-- INPUT LAYER -->
+  <rect x="30" y="50" width="1040" height="170" rx="12" fill="#DBEAFE" stroke="#3B82F6" stroke-width="2"/>
+  <text x="550" y="78" class="layer-title" fill="#1E40AF">INPUT LAYER</text>
+  
+  <rect x="60" y="95" width="300" height="100" rx="8" fill="#EFF6FF" stroke="#666" stroke-width="1.5"/>
+  <text x="210" y="140" class="box-text">CCTV Camera Video Feeds</text>
+  <text x="210" y="158" class="box-text">from Multiple Locations</text>
+
+  <rect x="400" y="95" width="300" height="100" rx="8" fill="#EFF6FF" stroke="#666" stroke-width="1.5"/>
+  <text x="550" y="132" class="box-text">Camera Metadata</text>
+  <text x="550" y="150" class="box-text">(GPS Coordinates, Orientation,</text>
+  <text x="550" y="168" class="box-text">Coverage Area)</text>
+
+  <rect x="740" y="95" width="300" height="100" rx="8" fill="#EFF6FF" stroke="#666" stroke-width="1.5"/>
+  <text x="890" y="140" class="box-text">User Inputs</text>
+  <text x="890" y="158" class="box-text">(Configuration, Manual Alerts)</text>
+
+  <!-- Arrow Input to Processing -->
+  <line x1="550" y1="220" x2="550" y2="255" stroke="#333" stroke-width="2.5"/>
+  <polygon points="550,260 544,250 556,250" fill="#333"/>
+
+  <!-- PROCESSING LAYER -->
+  <rect x="30" y="260" width="1040" height="270" rx="12" fill="#DCFCE7" stroke="#22C55E" stroke-width="2"/>
+  <text x="550" y="288" class="layer-title" fill="#166534">PROCESSING LAYER</text>
+
+  <!-- Top row boxes -->
+  <rect x="50" y="305" width="280" height="80" rx="8" fill="#F0FDF4" stroke="#666" stroke-width="1.5"/>
+  <text x="190" y="342" class="box-text">Frame Extraction</text>
+  <text x="190" y="360" class="box-text">&amp; Preprocessing</text>
+
+  <rect x="410" y="305" width="280" height="80" rx="8" fill="#F0FDF4" stroke="#666" stroke-width="1.5"/>
+  <text x="550" y="342" class="box-text">YOLOv8</text>
+  <text x="550" y="360" class="box-text">Object Detection</text>
+
+  <rect x="770" y="305" width="280" height="80" rx="8" fill="#F0FDF4" stroke="#666" stroke-width="1.5"/>
+  <text x="910" y="342" class="box-text">DeepSORT</text>
+  <text x="910" y="360" class="box-text">Multi-Object Tracking</text>
+
+  <!-- Arrows between top boxes -->
+  <line x1="330" y1="345" x2="405" y2="345" stroke="#333" stroke-width="2.5"/>
+  <polygon points="410,345 400,339 400,351" fill="#333"/>
+  <line x1="690" y1="345" x2="765" y2="345" stroke="#333" stroke-width="2.5"/>
+  <polygon points="770,345 760,339 760,351" fill="#333"/>
+
+  <!-- Arrow down to collision box -->
+  <line x1="550" y1="385" x2="550" y2="420" stroke="#333" stroke-width="2.5"/>
+  <polygon points="550,425 544,415 556,415" fill="#333"/>
+
+  <!-- Collision Detection box -->
+  <rect x="300" y="425" width="500" height="80" rx="8" fill="#F0FDF4" stroke="#666" stroke-width="1.5"/>
+  <text x="550" y="462" class="box-text">Collision Detection</text>
+  <text x="550" y="480" class="box-text">&amp; Alert Generation Logic</text>
+
+  <!-- Arrow Processing to Output -->
+  <line x1="550" y1="530" x2="550" y2="565" stroke="#333" stroke-width="2.5"/>
+  <polygon points="550,570 544,560 556,560" fill="#333"/>
+
+  <!-- OUTPUT LAYER -->
+  <rect x="30" y="570" width="1040" height="170" rx="12" fill="#FFF7ED" stroke="#F97316" stroke-width="2"/>
+  <text x="550" y="598" class="layer-title" fill="#9A3412">OUTPUT LAYER</text>
+
+  <rect x="60" y="610" width="300" height="100" rx="8" fill="#FFFBF5" stroke="#666" stroke-width="1.5"/>
+  <text x="210" y="655" class="box-text">SMS &amp; Voice Call Alerts</text>
+  <text x="210" y="673" class="box-text">to Emergency Responders</text>
+
+  <rect x="400" y="610" width="300" height="100" rx="8" fill="#FFFBF5" stroke="#666" stroke-width="1.5"/>
+  <text x="550" y="655" class="box-text">Dashboard Displays</text>
+  <text x="550" y="673" class="box-text">&amp; Analytical Reports</text>
+
+  <rect x="740" y="610" width="300" height="100" rx="8" fill="#FFFBF5" stroke="#666" stroke-width="1.5"/>
+  <text x="890" y="655" class="box-text">Database Records</text>
+  <text x="890" y="673" class="box-text">&amp; Audit Logs</text>
+
+  <!-- Arrow Output to Feedback -->
+  <line x1="550" y1="740" x2="550" y2="775" stroke="#333" stroke-width="2.5"/>
+  <polygon points="550,780 544,770 556,770" fill="#333"/>
+
+  <!-- FEEDBACK LOOP -->
+  <rect x="30" y="780" width="1040" height="190" rx="12" fill="#F3F4F6" stroke="#6B7280" stroke-width="2"/>
+  <text x="550" y="808" class="layer-title" fill="#374151">FEEDBACK LOOP</text>
+
+  <rect x="120" y="825" width="380" height="80" rx="8" fill="#F9FAFB" stroke="#666" stroke-width="1.5"/>
+  <text x="310" y="862" class="box-text">Operator Confirmation</text>
+  <text x="310" y="880" class="box-text">(True / False Positive)</text>
+
+  <rect x="600" y="825" width="380" height="80" rx="8" fill="#F9FAFB" stroke="#666" stroke-width="1.5"/>
+  <text x="790" y="862" class="box-text">Performance Analytics</text>
+  <text x="790" y="880" class="box-text">&amp; Parameter Adjustment</text>
+
+  <!-- Arrow between feedback boxes -->
+  <line x1="500" y1="865" x2="595" y2="865" stroke="#333" stroke-width="2.5"/>
+  <polygon points="600,865 590,859 590,871" fill="#333"/>
+
+  <!-- Feedback text -->
+  <text x="550" y="945" class="arrow-text">↻ Feeds back into Processing Layer for continuous improvement</text>
+
+  <!-- Curved feedback arrow (right side) -->
+  <path d="M 980 865 L 1090 865 L 1090 395 L 1075 395" fill="none" stroke="#DC2626" stroke-width="2.5" stroke-dasharray="8,4"/>
+  <polygon points="1070,395 1082,389 1082,401" fill="#DC2626"/>
+  
+  <!-- Feedback label on right side -->
+  <text x="1095" y="630" transform="rotate(90, 1095, 630)" class="arrow-text" font-size="12">Continuous Improvement</text>
+
+</svg>

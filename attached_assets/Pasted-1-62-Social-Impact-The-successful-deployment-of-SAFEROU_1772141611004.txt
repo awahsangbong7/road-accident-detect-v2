@@ -1,0 +1,75 @@
+1.62 Social Impact
+The successful deployment of SAFEROUTE CM has the potential to:
+•	Save lives by reducing emergency response times to road accident victims
+•	Reduce long-term disabilities among accident survivors through faster access to medical care
+•	Decrease the emotional and economic burden on families affected by road accidents
+•	Improve the overall sense of safety and security on Cameroon's roads
+1.83 Technical and Industrial Relevance
+The research demonstrates:
+•	The feasibility of implementing AI-powered monitoring systems using existing CCTV infrastructure
+•	Best practices for integrating multiple technologies (AI, web applications, communication APIs) into cohesive solutions
+•	A replicable model for similar implementations in other cities and countries
+•	Opportunities for local technology companies to develop and maintain road safety solutions
+1.8.4 Policy and Institutional Relevance
+The research provides:
+•	Evidence to support investment in AI-powered road safety technologies
+•	A framework for integrating automated detection systems with existing emergency response protocols
+•	Recommendations for policy and regulatory changes to support technology-enhanced road safety
+•	A model for public-private partnerships in road safety technology
+1.9 Scope and Delimitation of the Study
+1.9.1 Geographical Scope
+The study focuses on four major urban areas in Cameroon:
+•	Yaoundé: The political capital, located in the Centre Region
+•	Douala: The economic capital and largest city, located in the Littoral Region
+•	Bamenda: The largest city in the Anglophone North-West Region
+•	Buea: The capital of the South-West Region, located at the foot of Mount Cameroon
+These cities were selected based on their population size, traffic volume, existing CCTV infrastructure, and representation of different regional contexts within Cameroon.
+1.9.2 Population Scope
+The target group and users of the system are:
+•	Traffic management and monitoring personnel
+•	Police officers responsible for traffic and road safety
+•	Ambulance and emergency medical services personnel
+•	Fire department and rescue services personnel
+•	System administrators and technical staff
+The ultimate beneficiaries include all road users in the covered areas, including motorists, motorcyclists, cyclists, and pedestrians.
+1.9.3 Technical Scope
+The system implementation includes:
+•	Web-based application for monitoring and management
+•	AI-powered video analysis for accident detection (simulated in MVP phase)
+•	Integration with Twilio for SMS and voice call notifications
+•	PostgreSQL database for data persistence
+Authentication and role-based access control
+The following are explicitly outside the scope of this study:
+•	Development of custom CCTV camera hardware
+•	Direct integration with existing government traffic management systems
+•	Mobile application development (future work)
+Integration with hospital or medical record systems
+1.10 Limitations of the Study
+1.10.1 Data Constraints
+•	Limited access to actual CCTV camera feeds from municipal surveillance systems for development and testing
+•	Lack of large-scale, labeled dataset of road accidents specific to Cameroonian road conditions
+•	Privacy considerations limiting the use of certain video data
+
+1.10.2 Technical Limitations
+•	The AI detection module is simulated in the MVP phase; full integration of trained YOLOv8 models would require additional development time and computational resources
+•	The system's performance depends on the quality and positioning of CCTV cameras, which may vary across locations
+Network connectivity and bandwidth constraints may affect real-time video analysis in some areas
+1.10.3 Environmental and Contextual Limitations
+•	The study focuses on urban areas and may not directly generalize to rural road contexts
+•	Weather conditions (rain, fog, low light) may affect detection accuracy
+•	The diversity of vehicle types (including motorcycles, bicycles, and informal transport) presents detection challenges
+1.10.4 Resource Constraints
+•	Limited budget for acquiring specialized hardware (GPUs) for model training
+•	Time constraints affecting the extent of user testing and evaluation
+•	Dependence on third-party services (Twilio) for communication features
+1.11 Ethical Considerations
+1.11.1 Privacy and Data Protection
+The system processes video data from public spaces, raising privacy considerations. The following measures are implemented:
+•	Video data is processed in real-time without permanent storage of raw footage
+•	Personal identifying information is not extracted or stored from video feeds
+•	Alert notifications contain only necessary information for emergency response
+•	User data in the system is protected through authentication and access controls
+1.11.2 Consent and Transparency
+•	The use of CCTV cameras for public safety monitoring is consistent with existing municipal surveillance policies
+•	System users (emergency responders) provide informed consent for their participation
+•	The system's purpose and functionality are transparently communicated to stakeholders

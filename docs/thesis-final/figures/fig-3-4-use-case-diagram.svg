@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
+  <defs>
+    <style>
+      text { font-family: Arial, Helvetica, sans-serif; }
+      .title { font-size: 18px; font-weight: bold; text-anchor: middle; }
+      .actor-label { font-size: 11px; text-anchor: middle; }
+      .usecase { font-size: 11px; text-anchor: middle; }
+      .relation { font-size: 10px; font-style: italic; text-anchor: middle; }
+    </style>
+  </defs>
+
+  <!-- Title -->
+  <text x="700" y="28" class="title">Figure 3.4: Use Case Diagram for SAFEROUTE CM (UML)</text>
+
+  <!-- System boundary -->
+  <rect x="300" y="45" width="800" height="830" rx="15" fill="#FAFAFA" stroke="#333" stroke-width="2"/>
+  <text x="700" y="72" font-size="15" font-weight="bold" text-anchor="middle" fill="#333">SAFEROUTE CM</text>
+
+  <!-- ========== ACTORS (Left Side) ========== -->
+  <!-- Dispatcher -->
+  <circle cx="100" cy="200" r="15" fill="none" stroke="#333" stroke-width="2"/>
+  <line x1="100" y1="215" x2="100" y2="260" stroke="#333" stroke-width="2"/>
+  <line x1="70" y1="235" x2="130" y2="235" stroke="#333" stroke-width="2"/>
+  <line x1="100" y1="260" x2="75" y2="295" stroke="#333" stroke-width="2"/>
+  <line x1="100" y1="260" x2="125" y2="295" stroke="#333" stroke-width="2"/>
+  <text x="100" y="315" class="actor-label" font-weight="bold">Dispatcher</text>
+
+  <!-- System Admin -->
+  <circle cx="100" cy="450" r="15" fill="none" stroke="#333" stroke-width="2"/>
+  <line x1="100" y1="465" x2="100" y2="510" stroke="#333" stroke-width="2"/>
+  <line x1="70" y1="485" x2="130" y2="485" stroke="#333" stroke-width="2"/>
+  <line x1="100" y1="510" x2="75" y2="545" stroke="#333" stroke-width="2"/>
+  <line x1="100" y1="510" x2="125" y2="545" stroke="#333" stroke-width="2"/>
+  <text x="100" y="565" class="actor-label" font-weight="bold">System Admin</text>
+
+  <!-- ========== ACTORS (Right Side) ========== -->
+  <!-- Police Officer -->
+  <circle cx="1300" cy="150" r="15" fill="none" stroke="#333" stroke-width="2"/>
+  <line x1="1300" y1="165" x2="1300" y2="210" stroke="#333" stroke-width="2"/>
+  <line x1="1270" y1="185" x2="1330" y2="185" stroke="#333" stroke-width="2"/>
+  <line x1="1300" y1="210" x2="1275" y2="245" stroke="#333" stroke-width="2"/>
+  <line x1="1300" y1="210" x2="1325" y2="245" stroke="#333" stroke-width="2"/>
+  <text x="1300" y="265" class="actor-label" font-weight="bold">Police Officer</text>
+
+  <!-- Ambulance Staff -->
+  <circle cx="1300" cy="370" r="15" fill="none" stroke="#333" stroke-width="2"/>
+  <line x1="1300" y1="385" x2="1300" y2="430" stroke="#333" stroke-width="2"/>
+  <line x1="1270" y1="405" x2="1330" y2="405" stroke="#333" stroke-width="2"/>
+  <line x1="1300" y1="430" x2="1275" y2="465" stroke="#333" stroke-width="2"/>
+  <line x1="1300" y1="430" x2="1325" y2="465" stroke="#333" stroke-width="2"/>
+  <text x="1300" y="485" class="actor-label" font-weight="bold">Ambulance Staff</text>
+
+  <!-- Fire Department -->
+  <circle cx="1300" cy="580" r="15" fill="none" stroke="#333" stroke-width="2"/>
+  <line x1="1300" y1="595" x2="1300" y2="640" stroke="#333" stroke-width="2"/>
+  <line x1="1270" y1="615" x2="1330" y2="615" stroke="#333" stroke-width="2"/>
+  <line x1="1300" y1="640" x2="1275" y2="675" stroke="#333" stroke-width="2"/>
+  <line x1="1300" y1="640" x2="1325" y2="675" stroke="#333" stroke-width="2"/>
+  <text x="1300" y="695" class="actor-label" font-weight="bold">Fire Department</text>
+
+  <!-- ========== USE CASES ========== -->
+  <!-- Row 1 -->
+  <ellipse cx="500" cy="110" rx="120" ry="28" fill="#E8F4FD" stroke="#333" stroke-width="1.5"/>
+  <text x="500" y="114" class="usecase">Sign Up / Login</text>
+
+  <ellipse cx="800" cy="110" rx="120" ry="28" fill="#E8F4FD" stroke="#333" stroke-width="1.5"/>
+  <text x="800" y="114" class="usecase">View Role Dashboard</text>
+
+  <!-- Row 2 -->
+  <ellipse cx="500" cy="185" rx="120" ry="28" fill="#E8F4FD" stroke="#333" stroke-width="1.5"/>
+  <text x="500" y="189" class="usecase">Monitor Live Feeds</text>
+
+  <ellipse cx="800" cy="185" rx="120" ry="28" fill="#E8F4FD" stroke="#333" stroke-width="1.5"/>
+  <text x="800" y="189" class="usecase">Simulate Detection</text>
+
+  <!-- Row 3 -->
+  <ellipse cx="500" cy="265" rx="120" ry="28" fill="#FDE8E8" stroke="#333" stroke-width="1.5"/>
+  <text x="500" y="269" class="usecase">View Alerts</text>
+
+  <ellipse cx="800" cy="265" rx="120" ry="28" fill="#FDE8E8" stroke="#333" stroke-width="1.5"/>
+  <text x="800" y="269" class="usecase">Acknowledge Alert</text>
+
+  <!-- Row 4 -->
+  <ellipse cx="500" cy="345" rx="130" ry="28" fill="#FDE8E8" stroke="#333" stroke-width="1.5"/>
+  <text x="500" y="349" class="usecase">Send Emergency Notification</text>
+
+  <ellipse cx="800" cy="345" rx="120" ry="28" fill="#FDE8E8" stroke="#333" stroke-width="1.5"/>
+  <text x="800" y="349" class="usecase">Cancel False Alarm</text>
+
+  <!-- Row 5 -->
+  <ellipse cx="500" cy="425" rx="120" ry="28" fill="#E8FDE8" stroke="#333" stroke-width="1.5"/>
+  <text x="500" y="429" class="usecase">View Map</text>
+
+  <ellipse cx="800" cy="425" rx="120" ry="28" fill="#E8FDE8" stroke="#333" stroke-width="1.5"/>
+  <text x="800" y="429" class="usecase">View Analytics</text>
+
+  <!-- Row 6 -->
+  <ellipse cx="500" cy="505" rx="120" ry="28" fill="#E8FDE8" stroke="#333" stroke-width="1.5"/>
+  <text x="500" y="509" class="usecase">Upload Video</text>
+
+  <ellipse cx="800" cy="505" rx="130" ry="28" fill="#E8FDE8" stroke="#333" stroke-width="1.5"/>
+  <text x="800" y="509" class="usecase">Process Video for Detection</text>
+
+  <!-- Row 7 -->
+  <ellipse cx="500" cy="585" rx="120" ry="28" fill="#FFF3E0" stroke="#333" stroke-width="1.5"/>
+  <text x="500" y="589" class="usecase">Manage Cameras</text>
+
+  <ellipse cx="800" cy="585" rx="120" ry="28" fill="#FFF3E0" stroke="#333" stroke-width="1.5"/>
+  <text x="800" y="589" class="usecase">Manage Contacts</text>
+
+  <!-- Row 8 -->
+  <ellipse cx="500" cy="665" rx="120" ry="28" fill="#FFF3E0" stroke="#333" stroke-width="1.5"/>
+  <text x="500" y="669" class="usecase">Configure Settings</text>
+
+  <ellipse cx="800" cy="665" rx="120" ry="28" fill="#F3E8FD" stroke="#333" stroke-width="1.5"/>
+  <text x="800" y="669" class="usecase">Chat with AI Assistant</text>
+
+  <!-- Row 9 -->
+  <ellipse cx="650" cy="745" rx="120" ry="28" fill="#E8FDE8" stroke="#333" stroke-width="1.5"/>
+  <text x="650" y="749" class="usecase">View Dashboard</text>
+
+  <!-- ========== ASSOCIATIONS ========== -->
+  <!-- Dispatcher associations -->
+  <line x1="135" y1="200" x2="380" y2="185" stroke="#333" stroke-width="1.2"/>
+  <line x1="135" y1="200" x2="380" y2="265" stroke="#333" stroke-width="1.2"/>
+  <line x1="135" y1="220" x2="370" y2="345" stroke="#333" stroke-width="1.2"/>
+  <line x1="135" y1="200" x2="380" y2="110" stroke="#333" stroke-width="1.2"/>
+  <line x1="135" y1="250" x2="380" y2="425" stroke="#333" stroke-width="1.2"/>
+  <line x1="135" y1="250" x2="380" y2="505" stroke="#333" stroke-width="1.2"/>
+  <line x1="135" y1="250" x2="530" y2="745" stroke="#333" stroke-width="1.2"/>
+
+  <!-- System Admin associations -->
+  <line x1="135" y1="450" x2="380" y2="585" stroke="#333" stroke-width="1.2"/>
+  <line x1="135" y1="450" x2="380" y2="665" stroke="#333" stroke-width="1.2"/>
+  <line x1="135" y1="450" x2="680" y2="585" stroke="#333" stroke-width="1.2"/>
+  <line x1="135" y1="430" x2="380" y2="110" stroke="#333" stroke-width="1.2"/>
+
+  <!-- Police associations -->
+  <line x1="1265" y1="150" x2="920" y2="110" stroke="#333" stroke-width="1.2"/>
+  <line x1="1265" y1="170" x2="920" y2="185" stroke="#333" stroke-width="1.2"/>
+  <line x1="1265" y1="180" x2="920" y2="265" stroke="#333" stroke-width="1.2"/>
+  <line x1="1265" y1="200" x2="920" y2="345" stroke="#333" stroke-width="1.2"/>
+
+  <!-- Ambulance associations -->
+  <line x1="1265" y1="370" x2="920" y2="110" stroke="#333" stroke-width="1.2"/>
+  <line x1="1265" y1="370" x2="920" y2="185" stroke="#333" stroke-width="1.2"/>
+  <line x1="1265" y1="390" x2="920" y2="265" stroke="#333" stroke-width="1.2"/>
+  <line x1="1265" y1="410" x2="920" y2="345" stroke="#333" stroke-width="1.2"/>
+
+  <!-- Fire associations -->
+  <line x1="1265" y1="580" x2="920" y2="110" stroke="#333" stroke-width="1.2"/>
+  <line x1="1265" y1="580" x2="920" y2="185" stroke="#333" stroke-width="1.2"/>
+  <line x1="1265" y1="600" x2="920" y2="265" stroke="#333" stroke-width="1.2"/>
+  <line x1="1265" y1="620" x2="920" y2="345" stroke="#333" stroke-width="1.2"/>
+
+  <!-- ========== RELATIONSHIPS ========== -->
+  <!-- extends: Send Emergency Notification extends View Alerts -->
+  <line x1="530" y1="293" x2="500" y2="317" stroke="#333" stroke-width="1" stroke-dasharray="6,3"/>
+  <text x="460" y="305" class="relation">&lt;&lt;extends&gt;&gt;</text>
+
+  <!-- extends: Cancel False Alarm extends View Alerts -->
+  <line x1="700" y1="280" x2="780" y2="320" stroke="#333" stroke-width="1" stroke-dasharray="6,3"/>
+  <text x="770" y="300" class="relation">&lt;&lt;extends&gt;&gt;</text>
+
+  <!-- includes: Upload Video includes Process Video -->
+  <line x1="620" y1="505" x2="670" y2="505" stroke="#333" stroke-width="1" stroke-dasharray="6,3"/>
+  <text x="650" y="495" class="relation">&lt;&lt;includes&gt;&gt;</text>
+
+  <!-- Legend -->
+  <rect x="320" y="800" width="760" height="60" rx="8" fill="#F9F9F9" stroke="#CCC" stroke-width="1"/>
+  <text x="340" y="822" font-size="11" font-weight="bold">Legend:</text>
+  <ellipse cx="420" cy="830" rx="30" ry="12" fill="#E8F4FD" stroke="#333" stroke-width="1"/>
+  <text x="470" y="834" font-size="10">Monitoring</text>
+  <ellipse cx="540" cy="830" rx="30" ry="12" fill="#FDE8E8" stroke="#333" stroke-width="1"/>
+  <text x="590" y="834" font-size="10">Alert Mgmt</text>
+  <ellipse cx="670" cy="830" rx="30" ry="12" fill="#E8FDE8" stroke="#333" stroke-width="1"/>
+  <text x="720" y="834" font-size="10">Analysis</text>
+  <ellipse cx="790" cy="830" rx="30" ry="12" fill="#FFF3E0" stroke="#333" stroke-width="1"/>
+  <text x="840" y="834" font-size="10">Admin</text>
+  <ellipse cx="900" cy="830" rx="30" ry="12" fill="#F3E8FD" stroke="#333" stroke-width="1"/>
+  <text x="950" y="834" font-size="10">AI Features</text>
+  <line x1="1010" y1="825" x2="1050" y2="825" stroke="#333" stroke-width="1" stroke-dasharray="6,3"/>
+  <text x="1060" y="834" font-size="10" text-anchor="start">Relationship</text>
+
+</svg>

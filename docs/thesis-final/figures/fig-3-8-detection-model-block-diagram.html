@@ -1,0 +1,129 @@
+<!DOCTYPE html><html><body style="margin:10px;background:white"><?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">
+  <defs>
+    <style>
+      text { font-family: Arial, Helvetica, sans-serif; }
+      .title { font-size: 18px; font-weight: bold; text-anchor: middle; }
+      .block-title { font-size: 13px; font-weight: bold; text-anchor: middle; fill: #FFFFFF; }
+      .block-detail { font-size: 11px; text-anchor: middle; fill: #333; }
+      .io-label { font-size: 11px; text-anchor: middle; fill: #555; font-style: italic; }
+      .arrow-label { font-size: 10px; text-anchor: middle; fill: #666; }
+    </style>
+  </defs>
+
+  <!-- Title -->
+  <text x="600" y="28" class="title">Figure 3.8: Accident Detection Model — Block Diagram</text>
+
+  <!-- ===== INPUT BLOCK ===== -->
+  <rect x="30" y="55" width="180" height="120" rx="10" fill="#1E40AF" stroke="#1E3A8A" stroke-width="2"/>
+  <text x="120" y="90" class="block-title">INPUT</text>
+  <text x="120" y="110" font-size="11" text-anchor="middle" fill="#BFDBFE">CCTV Video</text>
+  <text x="120" y="126" font-size="11" text-anchor="middle" fill="#BFDBFE">Frames</text>
+  <text x="120" y="148" font-size="10" text-anchor="middle" fill="#93C5FD">t, t+1, t+2, ...</text>
+  <text x="120" y="165" font-size="10" text-anchor="middle" fill="#93C5FD">@ 30 FPS</text>
+
+  <!-- Arrow 1 -->
+  <line x1="210" y1="115" x2="270" y2="115" stroke="#333" stroke-width="2.5"/>
+  <polygon points="275,115 265,109 265,121" fill="#333"/>
+
+  <!-- ===== BLOCK 1: Frame Extraction ===== -->
+  <rect x="275" y="55" width="180" height="120" rx="10" fill="#0369A1" stroke="#075985" stroke-width="2"/>
+  <text x="365" y="85" class="block-title">STAGE 1</text>
+  <text x="365" y="105" font-size="12" text-anchor="middle" fill="#BAE6FD" font-weight="bold">Frame Extraction</text>
+  <text x="365" y="125" font-size="11" text-anchor="middle" fill="#BAE6FD">&amp; Preprocessing</text>
+  <text x="365" y="150" font-size="10" text-anchor="middle" fill="#7DD3FC">Resize, normalize,</text>
+  <text x="365" y="164" font-size="10" text-anchor="middle" fill="#7DD3FC">prepare for inference</text>
+
+  <!-- Arrow 2 -->
+  <line x1="455" y1="115" x2="515" y2="115" stroke="#333" stroke-width="2.5"/>
+  <polygon points="520,115 510,109 510,121" fill="#333"/>
+  <text x="487" y="105" class="arrow-label">Frames</text>
+
+  <!-- ===== BLOCK 2: YOLOv8 Detection ===== -->
+  <rect x="520" y="55" width="180" height="120" rx="10" fill="#15803D" stroke="#166534" stroke-width="2"/>
+  <text x="610" y="85" class="block-title">STAGE 2</text>
+  <text x="610" y="105" font-size="12" text-anchor="middle" fill="#BBF7D0" font-weight="bold">YOLOv8 Object</text>
+  <text x="610" y="121" font-size="12" text-anchor="middle" fill="#BBF7D0" font-weight="bold">Detection</text>
+  <text x="610" y="148" font-size="10" text-anchor="middle" fill="#86EFAC">Output: Bounding boxes</text>
+  <text x="610" y="162" font-size="10" text-anchor="middle" fill="#86EFAC">B = (x,y,w,h,class,conf)</text>
+
+  <!-- Arrow 3 -->
+  <line x1="700" y1="115" x2="760" y2="115" stroke="#333" stroke-width="2.5"/>
+  <polygon points="765,115 755,109 755,121" fill="#333"/>
+  <text x="732" y="105" class="arrow-label">Detections</text>
+
+  <!-- ===== BLOCK 3: DeepSORT Tracking ===== -->
+  <rect x="765" y="55" width="180" height="120" rx="10" fill="#7E22CE" stroke="#6B21A8" stroke-width="2"/>
+  <text x="855" y="85" class="block-title">STAGE 3</text>
+  <text x="855" y="105" font-size="12" text-anchor="middle" fill="#E9D5FF" font-weight="bold">DeepSORT</text>
+  <text x="855" y="121" font-size="12" text-anchor="middle" fill="#E9D5FF" font-weight="bold">Multi-Object Tracking</text>
+  <text x="855" y="148" font-size="10" text-anchor="middle" fill="#D8B4FE">Output: Track IDs</text>
+  <text x="855" y="162" font-size="10" text-anchor="middle" fill="#D8B4FE">T = (id, [positions])</text>
+
+  <!-- Arrow 4 (down) -->
+  <line x1="855" y1="175" x2="855" y2="240" stroke="#333" stroke-width="2.5"/>
+  <polygon points="855,245 849,235 861,235" fill="#333"/>
+  <text x="880" y="215" class="arrow-label">Trajectories</text>
+
+  <!-- ===== BLOCK 4: Collision Analysis ===== -->
+  <rect x="620" y="245" width="470" height="200" rx="10" fill="#B91C1C" stroke="#991B1B" stroke-width="2"/>
+  <text x="855" y="275" class="block-title">STAGE 4: COLLISION ANALYSIS</text>
+  
+  <!-- Sub-blocks inside collision analysis -->
+  <rect x="640" y="295" width="135" height="70" rx="6" fill="#FEE2E2" stroke="#EF4444" stroke-width="1.5"/>
+  <text x="707" y="322" font-size="10" text-anchor="middle" fill="#991B1B" font-weight="bold">Velocity Change</text>
+  <text x="707" y="340" font-size="9" text-anchor="middle" fill="#B91C1C">Δv > threshold</text>
+  <text x="707" y="354" font-size="9" text-anchor="middle" fill="#B91C1C">(sudden deceleration)</text>
+
+  <rect x="790" y="295" width="135" height="70" rx="6" fill="#FEE2E2" stroke="#EF4444" stroke-width="1.5"/>
+  <text x="857" y="315" font-size="10" text-anchor="middle" fill="#991B1B" font-weight="bold">Trajectory</text>
+  <text x="857" y="330" font-size="10" text-anchor="middle" fill="#991B1B" font-weight="bold">Intersection</text>
+  <text x="857" y="350" font-size="9" text-anchor="middle" fill="#B91C1C">Paths converge in</text>
+  <text x="857" y="362" font-size="9" text-anchor="middle" fill="#B91C1C">short time window</text>
+
+  <rect x="940" y="295" width="135" height="70" rx="6" fill="#FEE2E2" stroke="#EF4444" stroke-width="1.5"/>
+  <text x="1007" y="322" font-size="10" text-anchor="middle" fill="#991B1B" font-weight="bold">Bounding Box</text>
+  <text x="1007" y="340" font-size="9" text-anchor="middle" fill="#B91C1C">IoU(B1,B2) ></text>
+  <text x="1007" y="354" font-size="9" text-anchor="middle" fill="#B91C1C">overlap_threshold</text>
+
+  <!-- Weighted function -->
+  <rect x="720" y="385" width="270" height="40" rx="6" fill="#FCA5A5" stroke="#EF4444" stroke-width="1.5"/>
+  <text x="855" y="405" font-size="11" text-anchor="middle" fill="#7F1D1D" font-weight="bold">P(collision) = f(Δv, IoU, trajectory)</text>
+  <text x="855" y="420" font-size="9" text-anchor="middle" fill="#991B1B">Weighted combination of indicators</text>
+
+  <!-- Arrow 5 (down from collision) -->
+  <line x1="855" y1="445" x2="855" y2="500" stroke="#333" stroke-width="2.5"/>
+  <polygon points="855,505 849,495 861,495" fill="#333"/>
+
+  <!-- ===== BLOCK 5: Alert Generation ===== -->
+  <rect x="720" y="505" width="270" height="100" rx="10" fill="#EA580C" stroke="#C2410C" stroke-width="2"/>
+  <text x="855" y="535" class="block-title">STAGE 5: ALERT GENERATION</text>
+  <text x="855" y="558" font-size="11" text-anchor="middle" fill="#FED7AA">If confidence > threshold</text>
+  <text x="855" y="575" font-size="11" text-anchor="middle" fill="#FED7AA">→ Generate alert with</text>
+  <text x="855" y="592" font-size="11" text-anchor="middle" fill="#FED7AA">severity classification</text>
+
+  <!-- Arrow to OUTPUT -->
+  <line x1="990" y1="555" x2="1050" y2="555" stroke="#333" stroke-width="2.5"/>
+  <polygon points="1055,555 1045,549 1045,561" fill="#333"/>
+
+  <!-- ===== OUTPUT BLOCK ===== -->
+  <rect x="1055" y="495" width="130" height="120" rx="10" fill="#065F46" stroke="#064E3B" stroke-width="2"/>
+  <text x="1120" y="530" class="block-title">OUTPUT</text>
+  <text x="1120" y="550" font-size="10" text-anchor="middle" fill="#A7F3D0">SMS Alert</text>
+  <text x="1120" y="565" font-size="10" text-anchor="middle" fill="#A7F3D0">Voice Call</text>
+  <text x="1120" y="580" font-size="10" text-anchor="middle" fill="#A7F3D0">Dashboard</text>
+  <text x="1120" y="595" font-size="10" text-anchor="middle" fill="#A7F3D0">Notification</text>
+
+  <!-- ===== MATHEMATICAL FORMULATIONS (bottom) ===== -->
+  <rect x="30" y="640" width="1150" height="50" rx="8" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="600" y="660" font-size="11" text-anchor="middle" fill="#475569" font-weight="bold">Key Formulations:</text>
+  <text x="200" y="678" font-size="10" text-anchor="middle" fill="#64748B">v(t) = (pos(t) - pos(t-1)) / Δt</text>
+  <text x="450" y="678" font-size="10" text-anchor="middle" fill="#64748B">Δv(t) = |v(t) - v(t-1)|</text>
+  <text x="700" y="678" font-size="10" text-anchor="middle" fill="#64748B">IoU = Area(B1∩B2) / Area(B1∪B2)</text>
+  <text x="1000" y="678" font-size="10" text-anchor="middle" fill="#64748B">P(collision) = w₁·Δv + w₂·IoU + w₃·traj</text>
+
+  <!-- Feedback arrow (from output back to input) -->
+  <path d="M 120 175 L 120 640 L 30 640 L 30 115 L 28 115" fill="none" stroke="#DC2626" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <text x="55" y="400" font-size="10" fill="#DC2626" font-style="italic" transform="rotate(-90, 55, 400)">Continuous processing loop</text>
+
+</svg></body></html>

@@ -1,0 +1,27 @@
+1.41 AI-Powered Detection Module
+The heart of the system is an AI module that uses video feeds from CCTV cameras to automatically detect road accidents in real-time. This module shall utilize:
+•	YOLOv8 Object Detection: The latest version of the You Only Look Once (YOLO) algorithm for detecting vehicles, pedestrians, and other objects in the video frames.
+•	DeepSORT Tracking: A multi-object tracking algorithm that provides consistent identification of detected objects across frames, allowing analysis of vehicle movements and interactions.
+•	Collision Detection Logic: Custom algorithms that analyze the tracked objects to detect collision events based on sudden velocity changes, unusual trajectories, or physical contact between vehicles.
+1.42	Web-Based Dashboard
+A full-fledged web application that acts as the primary interface for system operators and emergency services. Major functionalities include: 
+•	Real-time Monitoring: Live streaming of camera feeds with detection overlays
+•	Alert Management: A platform for viewing, acknowledging, and managing detected accidents
+•	Based Access: Customized dashboards for different user roles (dispatchers, police, ambulance, fire department)
+•	Analytics and Reporting: Statistical analysis of detection performance and accident trends.
+1.4.3 Automated Alert System
+An alert notification system that automatically sends emergency notifications upon accident detection:
+•	Multi-Channel Notifications: Sending SMS notifications and voice calls to assigned responders
+•	Alert Settings: Alert threshold configuration, contact list management, and notification preferences
+•	False Alarm Prevention: 10-second countdown with cancel option to avoid sending notifications for false positives
+•	Alert Status Tracking: Monitoring of alert acknowledgment and response status
+1.4.4 Database and Backend Infrastructure
+A robust backend system to support the application's operations:
+•	PostgreSQL Database: Storage for camera data, contact information, alerts, user accounts, and system settings
+•	RESTful API: Integration of communication between the frontend, AI module, and external services
+•	Authentication and Authorization: Secure user management with role-based access control
+1.4.5 Integration with Communication Services
+Integration with Twilio's communication APIs to enable:
+•	SMS Notifications: Text messages containing accident details and location
+•	Voice Calls: Automated voice alerts for urgent notifications
+•	Configurable Settings: Enabling or disabling specific notification channels

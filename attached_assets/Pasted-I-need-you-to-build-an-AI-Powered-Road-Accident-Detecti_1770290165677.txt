@@ -1,0 +1,112 @@
+I need you to build an AI-Powered Road Accident Detection and Emergency Alert System based on the attached PRD document. This is for my Master's thesis at ICT University.
+
+SYSTEM OVERVIEW:
+- Analyze offline CCTV video footage to detect road accidents
+- Use YOLOv8 for vehicle detection and DeepSORT for tracking
+- Detect collision patterns and anomalies
+- Send SMS/Email alerts via Twilio API
+- Web-based dashboard using react
+
+TECHNICAL STACK:
+- Python 3.8+
+- YOLOv8 (Ultralytics) for object detection
+- OpenCV for video processing
+- DeepSORT for multi-object tracking
+- react for web interface
+- Twilio API for SMS/Email alerts
+- SQLite for data storage
+
+BUILD REQUIREMENTS:
+
+PHASE 1 - Core Video Processing:
+1. Create VideoLoader class that:
+   - Loads video files (MP4, AVI)
+   - Extracts frames at original FPS
+   - Resizes to 640x640 pixels
+   - Normalizes pixel values to [0,1]
+2. Handle multiple video formats
+3. Include progress tracking
+
+PHASE 2 - Detection & Tracking:
+1. Implement YOLODetector class:
+   - Load YOLOv8n model
+   - Detect vehicles, persons, motorcycles
+   - Filter detections by confidence (>0.5)
+2. Implement DeepSORTTracker class:
+   - Track objects across frames
+   - Maintain trajectory history
+   - Handle object entry/exit
+
+PHASE 3 - Accident Detection:
+1. Create AccidentAnalyzer class that detects:
+   - Sudden deceleration (>5 m/s²)
+   - Proximity violations (<2m between vehicles)
+   - Erratic motion patterns
+   - Direction changes (>30°)
+2. Calculate accident confidence score
+3. Trigger alert only if confidence >90%
+
+PHASE 4 - GPS & Alerts:
+1. GPSManager class:
+   - Register camera locations (lat/lon)
+   - Assign GPS to detected accidents
+2. AlertService class:
+   - Format SMS/Email messages
+   - Send via Twilio API
+   - Log all alerts to database
+   - Include: location, timestamp, confidence
+
+PHASE 5 - react Dashboard:
+Create UI with these pages:
+1. Upload Video - drag-and-drop interface
+2. Live Monitoring - show video with detection overlays
+3. Configuration - manage cameras, contacts, thresholds
+4. Analytics - detection stats, alert history
+5. Reports - exportable CSV logs
+
+CODE STRUCTURE:
+
+project/
+├── main.py (Streamlit app entry) please remember i dont want streamlit i want reeact
+├── requirements.txt
+├── modules/
+│ ├── video_loader.py
+│ ├── detector.py
+│ ├── tracker.py
+│ ├── analyzer.py
+│ ├── gps_manager.py
+│ └── alert_service.py
+├── utils/
+│ ├── config.py
+│ └── logger.py
+├── models/ (YOLOv8 weights)
+└── data/
+├── videos/
+└── database.db
+
+SPECIFIC REQUIREMENTS:
+
+All classes must have docstrings and type hints
+Include error handling for file operations
+Add logging for debugging
+Create requirements.txt with exact versions
+Performance target: 25+ FPS on GPU, 5+ FPS on CPU
+Alert delivery: <5 seconds from detection
+Detection target: >85% recall, >90% precision
+DELIVERABLES:
+
+Complete working codebase
+requirements.txt file
+README.md with setup instructions
+Sample .env file for API keys
+Basic unit tests for core modules
+Start with Phase 1 (Video Processing) and build incrementally. Use modular design so each component can be tested independently. Include comments explaining key logic, especially in the accident detection algorithms.
+.
+For the alerts i want it in a way that when it detects an accident it does a beep sound or a notification pops and it has a short countdown and if its a false alarm the user can cancel it if not it automatically sends and alert to all emergency services with all the information and it even adds an image of the accident with a short report
+.
+and also i want that it has both video and picture for the offline and as for the live camera section it can be in a way that a user can search live camera's depending on the location and can now monitor the street live and if any accident occurs it sends an alert then i forgot mentioning in the previous queue after that countdown and emergency services are alerted you can also intergrate the map so the user can track or when the message has been sent to emergency services it also attatches the location where the accident occured and the link on the map
+.
+infact you can also improvise so my app can be really nice
+.
+I want everything fully functional okay and its not only sms i want i want calls too and it can be in a way that after the alert it does the sms and calls the emerygency service automatically and for the calls i instead want an ai lady to be the one talking ypu get. and in the system you are building you can aswell implement an AI chat where users can talk or ask questions
+

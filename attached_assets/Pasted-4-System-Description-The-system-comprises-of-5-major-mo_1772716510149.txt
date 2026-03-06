@@ -1,0 +1,42 @@
+4)	System Description
+The system comprises of 5 major modules with their sub-modules as follows:
+
+1.	User:
+•	Register: User can register using personal details.
+•	Login: User can login in his personal account email id and password.
+•	Profile: User can edit their profile as well as add Emergency Contacts.
+•	Home: User will be able to see the Sensor readings i.e., Sound Meter and Accelerometer readings. User can also stop/start the detection system.
+•	Background: The system in the background will be continuously monitoring the Sound decibel value and accelerometer for any Accident type impacts. If it finds the App Notifies the User to verify if it’s a false alarm, if no action is done in 5 secs the Ambulance is assigned & notifies Hospital, Ambulance and Police about the accident with the location & User details.
+•	History: History of Accident detections & details.
+•	Notifications: User will be notified if system detects an Accident.
+
+2.	Admin:
+•	Login: Admin can login his account using id and password.
+•	Manage Hospital: Admin is the only person who can manage Hospital data and provide credentials to them. 
+•	Manage Ambulance: Admin can manage Ambulance data and provide credentials to them. Ambulances are also mentioned if they work independently or are owned by Hospitals.
+•	View Users: View all the Users registered in this system. 
+•	View Accidents: View all the Accidents and details about it, can be filtered date wise. 
+
+3.	Ambulance:
+•	Login: Ambulance driver can login his account using id and password.
+•	Home: The driver can see the current accident location along with the User details, the driver can directly navigate through Google Maps. The Driver can update the status whether he has picked/dropped the User.
+•	Notifications: The driver will get a notification if it is assigned a Pickup.
+
+
+4.	Hospital:
+•	Login: Hospital User can login his account using id and password.
+•	Home: The User can see the current accident location assigned to his Hospital if any. Hospital can also update the status whether the user has been admitted in the Hospital.
+•	View Accidents: List of all the Accidents and details about it assigned to his Hospital. 
+•	Manage Ambulance: Hospital can also manage their owned Ambulances.
+•	Notifications: The Hospital will get a notification if it is assigned a Pickup.
+5.	Police:
+•	Login: Police can login his account using id and password.
+•	Home: Police is able to see to Today’s accident specifically or filter date wise to see previous ones.
+•	Notifications: Police will get a notification if it is assigned a Pickup.
+
+
+
+
+
+
+
