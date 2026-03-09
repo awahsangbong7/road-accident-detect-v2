@@ -28,6 +28,7 @@ import {
   Truck,
   Flame,
   AlertTriangle,
+  Navigation,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -139,6 +140,7 @@ function getMenuForRole(role: string): MenuGroup[] {
             { title: "Live Monitoring", url: "/live", icon: MonitorPlay },
             { title: "Alerts", url: "/alerts", icon: Bell },
             { title: "Map View", url: "/map", icon: MapPin },
+            { title: "SafeRoute Planning", url: "/saferoute", icon: Navigation },
           ],
         },
         {

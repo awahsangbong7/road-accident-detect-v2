@@ -33,6 +33,7 @@ import PoliceDashboard from "@/pages/police-dashboard";
 import AmbulanceDashboard from "@/pages/ambulance-dashboard";
 import AdminDashboard from "@/pages/admin-dashboard";
 import AdminLogin from "@/pages/admin-login";
+import SafeRoute from "@/pages/saferoute";
 
 function RoleBasedHome({ userRole }: { userRole: string }) {
   switch (userRole) {
@@ -53,6 +54,7 @@ function AuthenticatedRouter({ userRole }: { userRole: string }) {
       <Route path="/live" component={LiveMonitoring} />
       <Route path="/alerts" component={Alerts} />
       <Route path="/map" component={MapView} />
+      <Route path="/saferoute" component={SafeRoute} />
       <Route path="/cameras" component={Cameras} />
       <Route path="/contacts" component={Contacts} />
       <Route path="/analytics" component={Analytics} />
