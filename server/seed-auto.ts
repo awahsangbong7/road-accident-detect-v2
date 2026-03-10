@@ -1,5 +1,5 @@
 import { db } from "./db";
-import { contacts, cameras } from "@shared/schema";
+import { contacts, cameras } from "../shared/schema";
 import { eq } from "drizzle-orm";
 
 export async function seedIfEmpty() {

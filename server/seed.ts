@@ -1,5 +1,5 @@
 import { db } from "./db";
-import { cameras, contacts, alerts } from "@shared/schema";
+import { cameras, contacts, alerts } from "../shared/schema";
 
 async function seed() {
   console.log("Seeding database...");

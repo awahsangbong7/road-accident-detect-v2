@@ -1,13 +1,12 @@
 import type { Express } from "express";
 import type { Server } from "http";
 import { storage } from "./storage";
-import { insertCameraSchema, insertContactSchema, insertAlertSchema, insertVideoSchema, insertConversationSchema } from "@shared/schema";
+import { insertCameraSchema, insertContactSchema, insertAlertSchema, insertVideoSchema, insertConversationSchema, users } from "../shared/schema";
 import { setupAuth, registerAuthRoutes } from "./replit_integrations/auth";
 import { sendSMS, makeVoiceCall, isTwilioConfigured, formatSMSBody } from "./services/twilio";
 import { seedUserData } from "./seed-auto";
 import { GoogleGenAI } from "@google/genai";
 import { db } from "./db";
-import { users } from "@shared/schema";
 import { eq } from "drizzle-orm";
 import { z } from "zod";
 import multer from "multer";
