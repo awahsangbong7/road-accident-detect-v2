@@ -42,13 +42,21 @@ const upload = multer({
   },
 });
 
-const gemini = new GoogleGenAI({
-  apiKey: process.env.AI_INTEGRATIONS_GEMINI_API_KEY,
-  httpOptions: {
-    apiVersion: "",
-    baseUrl: process.env.AI_INTEGRATIONS_GEMINI_BASE_URL,
-  },
-});
+// Lazy initialize Gemini to avoid crashing if API key is not set
+let gemini: GoogleGenAI | null = null;
+
+function getGeminiClient() {
+  if (!gemini && process.env.AI_INTEGRATIONS_GEMINI_API_KEY) {
+    gemini = new GoogleGenAI({
+      apiKey: process.env.AI_INTEGRATIONS_GEMINI_API_KEY,
+      httpOptions: {
+        apiVersion: "",
+        baseUrl: process.env.AI_INTEGRATIONS_GEMINI_BASE_URL,
+      },
+    });
+  }
+  return gemini;
+}
 
 const signupSchema = z.object({
   firstName: z.string().min(1),
@@ -829,7 +837,14 @@ Be helpful, knowledgeable, concise, and professional. Answer any question to the
       ];
 
       try {
-        const stream = await gemini.models.generateContentStream({
+        const geminiClient = getGeminiClient();
+        
+        if (!geminiClient) {
+          res.status(503).json({ error: "AI service is not configured. Please set GEMINI_API_KEY environment variable." });
+          return;
+        }
+
+        const stream = await geminiClient.models.generateContentStream({
           model: "gemini-2.5-flash",
           contents: geminiContents,
         });
