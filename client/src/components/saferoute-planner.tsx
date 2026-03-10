@@ -24,7 +24,23 @@ import {
   Users,
   Smartphone,
 } from "lucide-react";
-import type { Camera as CameraType, Alert } from "@shared/schema";
+// Type definitions for SafeRoute
+interface CameraType {
+  id: number;
+  name: string;
+  location: string;
+  latitude: number;
+  longitude: number;
+  status: string;
+  streamUrl?: string;
+}
+
+interface Alert {
+  id: number;
+  severity: "low" | "medium" | "high";
+  status: string;
+  detectedAt: string;
+}
 import { Skeleton } from "@/components/ui/skeleton";
 
 interface RouteOption {

@@ -14,7 +14,15 @@ import {
   Phone,
 } from "lucide-react";
 import { SafeRoutePlanner } from "@/components/saferoute-planner";
-import type { Alert } from "@shared/schema";
+// Type definitions for SafeRoute
+interface Alert {
+  id: number;
+  severity: "low" | "medium" | "high";
+  status: string;
+  detectedAt: string;
+  location?: string;
+  type?: string;
+}
 import { Skeleton } from "@/components/ui/skeleton";
 
 export default function SafeRoute() {
