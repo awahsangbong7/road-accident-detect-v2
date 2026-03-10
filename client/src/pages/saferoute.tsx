@@ -20,8 +20,11 @@ interface Alert {
   severity: "low" | "medium" | "high";
   status: string;
   detectedAt: string;
-  location?: string;
-  type?: string;
+  location: string;
+  type: string;
+  description?: string;
+  latitude?: number;
+  longitude?: number;
 }
 import { Skeleton } from "@/components/ui/skeleton";
 
