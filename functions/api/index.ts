@@ -155,23 +155,43 @@ async function handleRequest(req: Request): Promise<Response> {
 // Auth handlers
 async function handleAuthUser(req: Request): Promise<Response> {
   try {
-    const user = await blink.auth.me();
-    if (!user) {
+    const userId = await getUserId(req);
+    if (!userId) {
       return new Response(JSON.stringify(null), {
         status: 401,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
     
-    // Get additional user data from DB
-    const users = await blink.db.select<any[]>("users", { id: user.id });
+    // Get user data from DB
+    const users = await blink.db.select<any[]>("users", { id: userId });
     const dbUser = users[0] || {};
     
+    // Decode display name from JWT if available
+    let firstName = dbUser.first_name || "User";
+    let lastName = dbUser.last_name || "";
+    let email = dbUser.email || "";
+    
+    try {
+      const authHeader = req.headers.get("Authorization") || "";
+      const token = authHeader.replace("Bearer ", "");
+      const payload = JSON.parse(atob(token.split(".")[1]));
+      if (!firstName || firstName === "User") {
+        firstName = payload.first_name || payload.given_name || payload.name?.split(" ")[0] || "User";
+      }
+      if (!lastName) {
+        lastName = payload.last_name || payload.family_name || payload.name?.split(" ").slice(1).join(" ") || "";
+      }
+      if (!email) {
+        email = payload.email || "";
+      }
+    } catch {}
+    
     const responseUser = {
-      id: user.id,
-      email: user.email || dbUser.email,
-      firstName: dbUser.first_name || user.displayName?.split(" ")[0] || "User",
-      lastName: dbUser.last_name || user.displayName?.split(" ").slice(1).join(" ") || "",
+      id: userId,
+      email,
+      firstName,
+      lastName,
       role: dbUser.role || "dispatcher",
       city: dbUser.city || "",
       phone: dbUser.phone,

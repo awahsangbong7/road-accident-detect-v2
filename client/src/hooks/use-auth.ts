@@ -16,15 +16,19 @@ const API_URL = "https://e6pb5nhn--api.functions.blink.new";
 
 async function fetchUser(): Promise<User | null> {
   try {
-    const user = await blink.auth.me();
-    
-    if (!user) {
+    // Check local blink auth state first
+    const authUser = await blink.auth.me();
+
+    if (!authUser) {
       return null;
     }
-    
-    // Get additional user data from API
+
+    // Get the JWT token to pass to edge function
+    const token = await blink.auth.getValidToken();
+
+    // Get additional user data from API, passing auth token
     const response = await fetch(`${API_URL}/api/auth/user`, {
-      credentials: "include",
+      headers: token ? { Authorization: `Bearer ${token}` } : {},
     });
 
     if (response.status === 401) {
@@ -46,7 +50,7 @@ async function logout(): Promise<void> {
 
 export function useAuth() {
   const queryClient = useQueryClient();
-  
+
   const { data: user, isLoading } = useQuery<User | null>({
     queryKey: ["/api/auth/user"],
     queryFn: fetchUser,
