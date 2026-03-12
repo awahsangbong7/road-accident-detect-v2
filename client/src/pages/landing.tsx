@@ -2,6 +2,7 @@ import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ShieldCheck, Camera, Bell, MapPin, Brain, Clock, LogIn, UserPlus, Lock } from "lucide-react";
+import { blink } from "@/lib/blink";
 
 const features = [
   {
@@ -57,12 +58,10 @@ export default function Landing() {
               <UserPlus className="h-4 w-4 sm:mr-2" />
               <span className="hidden sm:inline">Sign Up</span>
             </Button>
-            <a href="/api/login">
-              <Button data-testid="button-login">
-                <LogIn className="h-4 w-4 sm:mr-2" />
-                <span className="hidden sm:inline">Sign In</span>
-              </Button>
-            </a>
+            <Button data-testid="button-login" onClick={() => blink.auth.login()}>
+              <LogIn className="h-4 w-4 sm:mr-2" />
+              <span className="hidden sm:inline">Sign In</span>
+            </Button>
             <Button variant="ghost" onClick={() => setLocation("/admin")} data-testid="button-admin-login-nav">
               <Lock className="h-4 w-4 sm:mr-2" />
               <span className="hidden sm:inline">Admin</span>
@@ -93,12 +92,10 @@ export default function Landing() {
                 alerting emergency responders to save lives faster.
               </p>
               <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-                <a href="/api/login">
-                  <Button size="lg" className="gap-2" data-testid="button-get-started">
-                    <ShieldCheck className="h-5 w-5" />
-                    Get Started
-                  </Button>
-                </a>
+                <Button size="lg" className="gap-2" data-testid="button-get-started" onClick={() => blink.auth.login()}>
+                  <ShieldCheck className="h-5 w-5" />
+                  Get Started
+                </Button>
                 <Button 
                   size="lg" 
                   variant="outline" 
@@ -168,12 +165,10 @@ export default function Landing() {
             <p className="mb-8 text-muted-foreground">
               Join SAFEROUTE CM and help protect lives on Cameroon's roads.
             </p>
-            <a href="/api/login">
-              <Button size="lg" data-testid="button-cta-login">
-                <LogIn className="mr-2 h-5 w-5" />
-                Sign In to Get Started
-              </Button>
-            </a>
+            <Button size="lg" data-testid="button-cta-login" onClick={() => blink.auth.login()}>
+              <LogIn className="mr-2 h-5 w-5" />
+              Sign In to Get Started
+            </Button>
           </div>
         </section>
       </main>

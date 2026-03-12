@@ -1,40 +1,57 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import type { User } from "@shared/models/auth";
+import { blink } from "../lib/blink";
+
+interface User {
+  id: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  role: string;
+  city: string;
+  phone?: string;
+}
+
+// API URL for edge function
+const API_URL = "https://e6pb5nhn--api.functions.blink.new";
 
 async function fetchUser(): Promise<User | null> {
-  const response = await fetch("/api/auth/user", {
-    credentials: "include",
-  });
+  try {
+    const user = await blink.auth.me();
+    
+    if (!user) {
+      return null;
+    }
+    
+    // Get additional user data from API
+    const response = await fetch(`${API_URL}/api/auth/user`, {
+      credentials: "include",
+    });
 
-  if (response.status === 401) {
+    if (response.status === 401) {
+      return null;
+    }
+
+    const userData = await response.json();
+    return userData;
+  } catch (error) {
+    console.error("Auth error:", error);
     return null;
   }
-
-  if (!response.ok) {
-    throw new Error(`${response.status}: ${response.statusText}`);
-  }
-
-  const user = await response.json();
-
-  fetch("/api/auth/init", {
-    method: "POST",
-    credentials: "include",
-  }).catch(() => {});
-
-  return user;
 }
 
 async function logout(): Promise<void> {
-  window.location.href = "/api/logout";
+  await blink.auth.logout();
+  window.location.href = "/";
 }
 
 export function useAuth() {
   const queryClient = useQueryClient();
+  
   const { data: user, isLoading } = useQuery<User | null>({
     queryKey: ["/api/auth/user"],
     queryFn: fetchUser,
     retry: false,
-    staleTime: 1000 * 60 * 5, // 5 minutes
+    staleTime: 1000 * 60 * 5,
   });
 
   const logoutMutation = useMutation({
